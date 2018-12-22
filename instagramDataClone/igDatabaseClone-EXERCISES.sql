@@ -52,4 +52,14 @@ INNER JOIN tags
     ON photo_tags.tag_id = tags.id 
 GROUP BY tags.id 
 ORDER BY total DESC 
-LIMIT 5; 
+LIMIT 5;
+
+-- Challenge 7: Find users who have liked every single photo on the site
+SELECT 
+    username, 
+    Count(*) AS num_likes
+FROM users 
+INNER JOIN likes 
+    ON users.id = likes.user_id 
+GROUP BY likes.user_id 
+HAVING num_likes = (SELECT Count(*) FROM photos); 
