@@ -35,4 +35,12 @@ GROUP BY photos.id
 ORDER BY total DESC
 LIMIT 1;
 
--- Challenge 5: 
+-- Challenge 5: How many times does the average user post?
+-- Calculate the average number of photos per user
+SELECT 
+(SELECT Count(*) FROM photos) 
+/ 
+(SELECT Count(*) FROM users) 
+AS avg; 
+
+-- Challenge 6: 
